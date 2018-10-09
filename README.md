@@ -1,5 +1,5 @@
 Example of README file
 =======
 ![Omae wo mou shindeiru](1.jpg)
-## Omae wo mou shindeiruuuuuuuuuuuuuuuuuurururu
+## Omae wo mou shindeiruuuuuuuuuuuuuuuuuururururrruu
 <abbr title="Rolling on Floor Laughing ">ROFL</abbr>
