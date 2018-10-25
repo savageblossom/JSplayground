@@ -1,52 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+  <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Lab2</title>
   </head>
-  <body>
-    <script type="text/javascript">
-      function toConsole(something){
-        return console.log(something);
-      }
+    <body>
+      <script type="text/javascript">
+        function toConsole(something){
+          return console.log(something);
+        }
+        var lab = {
+          num: 2,
+          discipline: "Информатика и программирование",
+          title: "Типы данных, оператор typeof()",
+          goal: "Подготовить окружение для написания первой программы JavaScript",
+          author: "Мурадасилов Умер Джаппарович",
+          group: "И-18",
+          infoToConsole: function(){
+            toConsole("Лабораторная работа №"+this.num+"\n"
+            +"По дисциплине: "+this.discipline+"\n"
+            +"Тема занятия: "+this.title+"\n"
+            +"Цель занятия: "+this.goal+"\n"
+            +"Выполнил студент: "+this.author+" "+this.group);
+          }
+        }
 
+        lab.infoToConsole();
+        toConsole("\n\n\n");
 
-      toConsole("=== Упражнение 1 ===");
-      let name = "Umer",
-          lastName = "Muradasiloff",
-          patr = "Dzhapparovich",
-          fullName = name + " " + lastName + " " + patr;
+        //
+        // --- Задача 1
+        //
 
-      toConsole("Длина имени: " + name.length);
-      toConsole("Длина фамилии: " + lastName.length);
-      toConsole("Длина отчество: " + patr.length);
-      toConsole("Длина ФИО: " + fullName.length);
+        toConsole("== 1. Переменные === \n"+"===== Задача 1 =====");
+        var student = {
+              firstName: "Umer",
+              surName: "Muradasiloff",
+              patr: "Dzhapparovich",
+              age: 20,
+              bloodType: "AB negative",
+              showFullInfo: function(){ // Конкатенация строк
+                return "Full name: "+ this.firstName +" "+ this.surName  +" "+ this.patr +"\n"
+                +"Age: "+ this.age +"\n"
+                +"Blood Type: "+ this.bloodType;
+              }
+            }
+        toConsole(student.showFullInfo()); // Вывод результата в консоль
 
-      toConsole("\n=== Упражнение 2 ===");
-      let skrg = "Шла Саша по шоссе";
-      toConsole(skrg+"\n"
-      +"Две первые: "+skrg[0]+skrg[1]+"\n"
-      +"Две последние буквы: "+skrg[skrg.length-1]+skrg[skrg.length-2]);
+        //
+        // --- Задача 2
+        //
+        toConsole("===== Задача 2 =====");
+        var disciplines = ["Информатика", "Дискретная математика", "Мат. анализ"];
+        toConsole(disciplines);
 
-      toConsole("\n=== Упражнение 3 ===");
-      toConsole("Позиция первой пустой подстроки: "+skrg.indexOf(" "));
+        //
+        // --- Задача 3
+        //
 
-      toConsole("\n=== Упражнение 5 ===");
-      skrg = skrg.split("");
-      skrg[skrg.indexOf(" ")+1] = skrg[skrg.indexOf(" ")+1].toLowerCase();
-      toConsole(skrg.join(""));
-      skrg[skrg.indexOf(" ")+1] = skrg[skrg.indexOf(" ")+1].toUpperCase();
-      skrg = skrg.join("");
-      toConsole(skrg);
+        toConsole("===== Задача 3 =====");
+        function whoIsAdmin(admin, name){
+          if(arguments[0]===arguments[1]) toConsole("Андрей - админ")
+        }
+        whoIsAdmin("Андрей", "Андрей");
 
-      toConsole("\n=== Упражнение 6 ===");
-      let expErr = "Не хочу учится а хочу женится";
-          expErr = expErr.slice(0, expErr.indexOf("тся")) + "ться, " + expErr.slice(expErr.indexOf("а"), expErr.indexOf("тся", 15))
-          + "ться";
-      toConsole(expErr);
+        //
+        // --- Задача 4
+        //
 
-    </script>
-  </body>
-</html>
+        toConsole("===== Задача 4 =====");
+        function numbSwap(a, b){
+          let c = a;
+          a = b;
+          b = c;
+          return "A is now " + a + "\n" + "and B is " + b;
+        }
+        toConsole(numbSwap(1000, 5));
+        toConsole("\n\n\n");
+        //
+        // --- Задание 1
+        //
+        toConsole("== 2. Переменные === \n"+"===== Задание 1 =====");
+        var number = Math.random()*100;
+        toConsole(number);
+        toConsole(typeof number);
+        toConsole(typeof(number));
+
+        toConsole(number.toExponential());
+        toConsole(number.toExponential(3));
+        toConsole(number.toExponential(6));
+
+        toConsole(number.toString());
+        toConsole(number.toString(16));
+        toConsole(typeof number.toString());
+
+        toConsole(number.toPrecision(3));
+        toConsole(number.toFixed(3));
+
+        toConsole(Number.MAX_VALUE);
+        toConsole(Number.MIN_VALUE);
+
+        //
+        // --- Задание 2
+        //
+        toConsole("===== Задание 2 =====");
+
+        // Методы объекта MATH
+        toConsole("Сгенерированное методом объекта Math число: "+number); // См объявление переменной чуть выше - там и используется  Math.random
+        toConsole(Math.floor(number)); // Возвращает наибольшее целое, меньшее или равное аргументу
+        toConsole(Math.ceil(number)); // Возвращает наименьшее целое, большее или равное аргументу
+
+        //Если дробная часть числа равна 0.5 или больше,
+        // то аргумент округляется к следующему большему целому.
+        // Если дробная часть меньше, чем 0.5, то округление производится до ближайшего меньшего целого.
+        toConsole(Math.round(number));
+
+        toConsole(Math.sqrt(number)); // Возвращает квадратный корень
+        toConsole(Math.pow(number, 2)); // Возвращает 1-й аргумент ^ 2-й аргумент
+        toConsole(Math.log(number)); // Возвращает натуральный (по основанию E) логарифм числа
+        toConsole(Math.min(number*0.5, number*0.2, number*0.7)); // Возврвщает наименьший аргумент
+        toConsole(Math.max(number*0.5, number*0.2, number*0.7)); // Возврвщает наибольший аргумент
+        toConsole(Math.exp(number)); // Возвращает Е^аргумент
+        toConsole(Math.abs(-number)); // Возвращает абсолютное значение аргумента, то есть отбрасывает минус, если число отрицательное
+
+        toConsole(Math.sin(Math.PI/6)); // Возвращает синус в радианах
+        toConsole(Math.cos(0)); // Возвращает косинус в радианах
+        toConsole(Math.tan(Math.PI/4)); // Возвращает тангенс в радианах
+        toConsole(Math.atan(Math.PI/6)); // Возвращает арктангенс в радианах
+        toConsole(Math.acos(Math.PI/6)); // Возвращает аркосинус в радианах
+        toConsole(Math.asin(Math.PI/6)); // Возвращает арксинус в радианах
+
+        // Свойства объекта MATH
+        toConsole(Math.E); // Константа Эйлера, то есть экспонента, то есть 2.718
+        toConsole(Math.LN2); // Натуральный логарим
+        toConsole(Math.LOG2E); // Логарифм Е по основанию 2
+        toConsole(Math.LOG10E); // Логарифм Е по основанию 10
+        toConsole(Math.PI); // Число пи
+        toConsole(Math.SQRT2); // Квадратный корень из 2
+        toConsole(Math.SQRT1_2); // Квадратный корень из 1/2
+        toConsole(Math.LN10); // Натуральный логарифм 10
+      </script>
+    </body>
+  </html>
