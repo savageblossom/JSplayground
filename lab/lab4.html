@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab4</title>
+  </head>
+  <body>
+    <p id="txt">Lorem ipsum dolor sit amet</p>
+
+    <script type="text/javascript">
+      function toConsole(something){
+        return console.log(something);
+      }
+
+      toConsole("=== Упражнение 1 ===");
+      let Numbers = [];
+      function generateNumericArray(variableName, countOfElements){
+        while(variableName.length < countOfElements) variableName[variableName.length] = Math.round(Math.random()*100);
+        return variableName;
+      }
+      generateNumericArray(Numbers, 5);
+      toConsole(Numbers);
+      toConsole('Второй элемент: '+Numbers[1] + '\n' + 'Предпоследний элемент: '
+      + Numbers[Numbers.length-2]);
+
+      toConsole("\n=== Упражнение 2 ===");
+      let Letters = (document.getElementById('txt').innerHTML).split(" ");
+      Letters[Letters.length] = Letters[0];
+      Letters[0] = Letters[2];
+      Letters[2] = Letters[5];
+      Letters.pop();
+      toConsole(Letters);
+
+      toConsole("\n=== Упражнение 3 ===");
+      let numbersThree = [];
+      generateNumericArray(numbersThree, 3);
+      toConsole(numbersThree);
+
+      toConsole("\n=== Упражнение 4 ===");
+      let numbersFour = [];
+      generateNumericArray(numbersFour, 3);
+      toConsole(numbersFour);
+      numbersFour.unshift(100);
+      numbersFour.push(100);
+      toConsole(numbersFour);
+      numbersFour.pop();
+      numbersFour.shift();
+      toConsole(numbersFour);
+      numbersFour.length = 0;
+      toConsole(numbersFour);
+
+      toConsole("\n=== Упражнение 5 ===");
+      let colors = ['white', 'yellow', 'blue'];
+      toConsole(colors.join(" или"));
+      toConsole(colors.join(", "));
+      toConsole(colors.join(":"));
+
+      toConsole("\n=== Упражнение 6 ===");
+      let numbersSix = [1, 2, 3];
+      colors.concat(numbersSix);
+      toConsole(colors); // То же, что и было до этого в массиве, ибо не были присвоены изменения
+      let colorNumber = colors.concat(numbersSix);
+      toConsole(colorNumber);
+      colors.length = 0;
+
+      toConsole("\n=== Упражнение 7 ===");
+      let arr = [1, 2, 3, 4, 5];
+      toConsole(arr.slice(1)); // 2, 3, 4, 5
+      toConsole(arr.slice(1, 4)); // 2, 3, 4
+      toConsole(arr.slice(3, 4)); // 4
+      toConsole(arr.slice(arr.length-2)); // 4, 5
+
+      toConsole(""+arr.slice(-3, -1)); // 3, 4
+      toConsole(arr.slice(arr.length-3, arr.length-1)); // 3, 4
+
+      toConsole(arr.reverse());
+      arr.length = 0;
+
+
+      toConsole("\n=== Упражнение 8 ===");
+      generateNumericArray(arr, 8);
+      toConsole(arr);
+      toConsole(arr.sort());
+
+      toConsole("\n=== Упражнение 9 ===");
+      arr = [1, 2, 3, 4, 5, 6];
+      toConsole(arr.splice(3, 2)); // [4, 5] - удаляет элементы с индексом от [3] до [4] и возвращает их
+      arr = [1, 2, 3, 4, 5, 6];
+      toConsole(arr.splice(-5, 2)); // [1, 2] - удаляет элементы с индексом от [0] до [1] и возвращает их
+      arr = [1, 2, 3, 4, 5, 6];
+      toConsole(arr.splice(2, 0, 7)); // Поскольку второй аргумент 0, то в массиве ничего не удаляется,
+                                      //  следовательно возвращается пустой массив [], но элемент "7"
+      // toConsole(arr);
+    </script>
+  </body>
+</html>
