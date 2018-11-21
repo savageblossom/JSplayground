@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab6-7</title>
+  </head>
+  <body>
+    <p id="txt">Lorem ipsum dolor sit amet</p>
+
+    <script type="text/javascript">
+      function toConsole(something){
+        return console.log(something);
+      }
+
+      toConsole("=== Упражнение 1 ===");
+        function isGreater(a, b) {
+          if(a > b) { return a+" is greater than "+b}
+          else { return a+" is not greater than "+b};
+        }
+        console.log(isGreater(6,5));
+
+
+      toConsole("=== Упражнение 2 ===");
+        function sort(){
+          var arr = arguments,
+              numHandler;
+          for(let j = 0; j <= 10; j++){
+            for(let i = 0; i <= arr.length; i++) {
+              if(arr[i]>arr[i+1]){
+                numHandler = arr[i];
+                arr[i] = arr[i+1];
+                arr[i+1] = numHandler;
+              }
+            }
+          }
+          return arr;
+        }
+      toConsole(sort(5, 2, 4, 7, 9, 0, 3));
+
+
+      toConsole("=== Упражнение 3 ===");
+      if(0) { toConsole('123'); }
+      // Не вывелось, поскольку 0 - это false
+
+      toConsole("=== Упражнение 4 ===");
+        function findMax() {
+          var arr = arguments,
+              maxNum = 0;
+            for(let i = 0; i <= arr.length; i++) {
+              if(arr[i]>maxNum) {
+                maxNum = arr[i];
+              }
+            }
+          return maxNum;
+        }
+      toConsole(findMax(2, 5, 1, 666, 4, 2, 2, 3, 5, 7, 888));
+
+
+      toConsole("=== Упражнение 5-6 ===");
+      let ageFa = 61,
+          ageMa = 61;
+      if(ageFa === ageMa) toConsole('Мои родители - ровесники')
+      else if(ageFa > ageMa) toConsole('Папа старше мамы')
+      else toConsole('Мама старше папы')
+
+
+      toConsole("=== Упражнение 7 ===");
+      let num1 = +prompt('enter number 1', ''),
+          sign = prompt('enter sign,', ''),
+          num2 = +prompt('enter number 2', '');
+
+      switch(sign){
+        case '+':
+          toConsole(num1+num2);
+          break;
+        case '-':
+          toConsole(num1-num2);
+          break;
+        case '*':
+          toConsole(num1*num2);
+          break;
+        case '/':
+          if(num1===0){
+            toConsole('error: division by zero');
+            break;
+          } else {
+            toConsole(num1/num2);
+            break;
+          }
+      }
+
+          // 6
+     toConsole('=== Упражнение 8 ===');
+     function equalThousand(num, meth) {
+       if(meth===0){
+         if(num === 1000) toConsole('Верно')
+         else{ toConsole('Неверно')};
+       }
+       else if(meth===1) {
+         (num === 1000) ? toConsole('Верно') : toConsole('Неверно');
+       }
+       else{
+         toConsole('if или тернарный? \n 0 - if \n 1 -тернарный');
+       }
+     }
+     equalThousand(1000, 1);
+
+     // 7
+     toConsole('=== Упражнение 8 ===');
+     let a = "asd";
+
+     switch ( a ) {
+       case 9:
+         toConsole('Это меньше а');
+         break;
+       case 10:
+         toConsole('Это a');
+         break;
+       case 11:
+         toConsole('Это больше а');
+         break;
+       default:
+         toConsole('Это не a');
+     }
+
+     toConsole('=== Упражнение 9 ===');
+     function fillWeek(lang){
+       /*if(lang==="ru") {
+         arr = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+         return arr;
+       }
+       else if(lang==="en") {
+         arr = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+         return arr;
+       }
+       else { return "Введите язык дней недели!"; } */
+
+       switch(lang) {
+         case 'en':
+           arr = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+           return arr;
+           break;
+         case 'ru':
+           arr = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+           return arr;
+           break;
+         default:
+           return "Введите язык дней недели!".split(" ");
+       }
+     }
+     toConsole(fillWeek('ru'));
+
+
+     /*toConsole('=== Упражнение 10 ===');
+     let num1 = parseInt(prompt('введите число 1', '')),
+         sign = prompt('введите действие с числами', ''),
+         num2 = parseInt(prompt('введите число 2', ''));
+
+     switch(sign) {
+       case '+':
+         toConsole(num1+num2);
+         break;
+       case '-':
+         toConsole(num1-num2);
+         break;
+       case '*':
+         toConsole(num1*num2);
+         break;
+       case '/':
+         if(num1===0) {
+           toConsole('error: division by Zero');
+           break;
+         } else {
+           toConsole(num1/num2);
+           break;
+         }
+       default:
+         toConsole('Введите действие (+, -, * или /)!');
+     } */
+
+     toConsole('=== Упражнение 11 ===');
+     function howManyLetters(word) {
+       word = word.split('');
+
+       var a = 0,
+           j = 0;
+       for(let i = 0; i <= word.length; i++){
+         if(word[i]=='a'||'e'||'i'||'o') { a++; }
+       }
+       return a;
+     }
+     toConsole(howManyLetters('aafasf'));
+
+    </script>
+  </body>
+</html>
