@@ -8,33 +8,11 @@
   </head>
     <body>
       <script type="text/javascript">
-        function toConsole(something){
-          return console.log(something);
-        }
-        var lab = {
-          num: 2,
-          discipline: "Информатика и программирование",
-          title: "Типы данных, оператор typeof()",
-          goal: "Подготовить окружение для написания первой программы JavaScript",
-          author: "Мурадасилов Умер Джаппарович",
-          group: "И-18",
-          infoToConsole: function(){
-            toConsole("Лабораторная работа №"+this.num+"\n"
-            +"По дисциплине: "+this.discipline+"\n"
-            +"Тема занятия: "+this.title+"\n"
-            +"Цель занятия: "+this.goal+"\n"
-            +"Выполнил студент: "+this.author+" "+this.group);
-          }
-        }
-
-        lab.infoToConsole();
-        toConsole("\n\n\n");
-
         //
         // --- Задача 1
         //
 
-        toConsole("== 1. Переменные === \n"+"===== Задача 1 =====");
+        console.log("== 1. Переменные === \n"+"===== Задача 1 =====");
         var student = {
               firstName: "Umer",
               surName: "Muradasiloff",
@@ -47,22 +25,22 @@
                 +"Blood Type: "+ this.bloodType;
               }
             }
-        toConsole(student.showFullInfo()); // Вывод результата в консоль
+        console.log(student.showFullInfo()); // Вывод результата в консоль
 
         //
         // --- Задача 2
         //
-        toConsole("===== Задача 2 =====");
+        console.log("===== Задача 2 =====");
         var disciplines = ["Информатика", "Дискретная математика", "Мат. анализ"];
-        toConsole(disciplines);
+        console.log(disciplines);
 
         //
         // --- Задача 3
         //
 
-        toConsole("===== Задача 3 =====");
+        console.log("===== Задача 3 =====");
         function whoIsAdmin(admin, name){
-          if(arguments[0]===arguments[1]) toConsole("Андрей - админ")
+          if(arguments[0]===arguments[1]) console.log("Андрей - админ")
         }
         whoIsAdmin("Андрей", "Андрей");
 
@@ -70,77 +48,77 @@
         // --- Задача 4
         //
 
-        toConsole("===== Задача 4 =====");
+        console.log("===== Задача 4 =====");
         function numbSwap(a, b){
           let c = a;
           a = b;
           b = c;
           return "A is now " + a + "\n" + "and B is " + b;
         }
-        toConsole(numbSwap(1000, 5));
-        toConsole("\n\n\n");
+        console.log(numbSwap(1000, 5));
+        console.log("\n\n\n");
         //
         // --- Задание 1
         //
-        toConsole("== 2. Переменные === \n"+"===== Задание 1 =====");
+        console.log("== 2. Переменные === \n"+"===== Задание 1 =====");
         var number = Math.random()*100;
-        toConsole(number);
-        toConsole(typeof number);
-        toConsole(typeof(number));
+        console.log(number);
+        console.log(typeof number);
+        console.log(typeof(number));
 
-        toConsole(number.toExponential());
-        toConsole(number.toExponential(3));
-        toConsole(number.toExponential(6));
+        console.log(number.toExponential());
+        console.log(number.toExponential(3));
+        console.log(number.toExponential(6));
 
-        toConsole(number.toString());
-        toConsole(number.toString(16));
-        toConsole(typeof number.toString());
+        console.log(number.toString());
+        console.log(number.toString(16));
+        console.log(typeof number.toString());
 
-        toConsole(number.toPrecision(3));
-        toConsole(number.toFixed(3));
+        console.log(number.toPrecision(3));
+        console.log(number.toFixed(3));
 
-        toConsole(Number.MAX_VALUE);
-        toConsole(Number.MIN_VALUE);
+        console.log(Number.MAX_VALUE);
+        console.log(Number.MIN_VALUE);
 
         //
         // --- Задание 2
         //
-        toConsole("===== Задание 2 =====");
+        console.log("===== Задание 2 =====");
 
         // Методы объекта MATH
-        toConsole("Сгенерированное методом объекта Math число: "+number); // См объявление переменной чуть выше - там и используется  Math.random
-        toConsole(Math.floor(number)); // Возвращает наибольшее целое, меньшее или равное аргументу
-        toConsole(Math.ceil(number)); // Возвращает наименьшее целое, большее или равное аргументу
+        console.log("Сгенерированное методом объекта Math число: "+number); // См объявление переменной чуть выше - там и используется  Math.random
+        console.log(Math.floor(number)); // Возвращает наибольшее целое, меньшее или равное аргументу
+        console.log(Math.ceil(number)); // Возвращает наименьшее целое, большее или равное аргументу
 
         //Если дробная часть числа равна 0.5 или больше,
         // то аргумент округляется к следующему большему целому.
         // Если дробная часть меньше, чем 0.5, то округление производится до ближайшего меньшего целого.
-        toConsole(Math.round(number));
+        console.log(Math.round(number));
 
-        toConsole(Math.sqrt(number)); // Возвращает квадратный корень
-        toConsole(Math.pow(number, 2)); // Возвращает 1-й аргумент ^ 2-й аргумент
-        toConsole(Math.log(number)); // Возвращает натуральный (по основанию E) логарифм числа
-        toConsole(Math.min(number*0.5, number*0.2, number*0.7)); // Возврвщает наименьший аргумент
-        toConsole(Math.max(number*0.5, number*0.2, number*0.7)); // Возврвщает наибольший аргумент
-        toConsole(Math.exp(number)); // Возвращает Е^аргумент
-        toConsole(Math.abs(-number)); // Возвращает абсолютное значение аргумента, то есть отбрасывает минус, если число отрицательное
+        console.log(Math.sqrt(number)); // Возвращает квадратный корень
+        console.log(Math.pow(number, 2)); // Возвращает 1-й аргумент ^ 2-й аргумент
+        console.log(Math.log(number)); // Возвращает натуральный (по основанию E) логарифм числа
+        console.log(Math.min(number*0.5, number*0.2, number*0.7)); // Возврвщает наименьший аргумент
+        console.log(Math.max(number*0.5, number*0.2, number*0.7)); // Возврвщает наибольший аргумент
+        console.log(Math.exp(number)); // Возвращает Е^аргумент
+        console.log(Math.abs(-number)); // Возвращает абсолютное значение аргумента, то есть отбрасывает минус, если число отрицательное
 
-        toConsole(Math.sin(Math.PI/6)); // Возвращает синус в радианах
-        toConsole(Math.cos(0)); // Возвращает косинус в радианах
-        toConsole(Math.tan(Math.PI/4)); // Возвращает тангенс в радианах
-        toConsole(Math.atan(Math.PI/6)); // Возвращает арктангенс в радианах
-        toConsole(Math.acos(Math.PI/6)); // Возвращает аркосинус в радианах
-        toConsole(Math.asin(Math.PI/6)); // Возвращает арксинус в радианах
+        console.log(Math.sin(Math.PI/6)); // Возвращает синус в радианах
+        console.log(Math.cos(0)); // Возвращает косинус в радианах
+        console.log(Math.tan(Math.PI/4)); // Возвращает тангенс в радианах
+        console.log(Math.atan(Math.PI/6)); // Возвращает арктангенс в радианах
+        console.log(Math.acos(Math.PI/6)); // Возвращает аркосинус в радианах
+        console.log(Math.asin(Math.PI/6)); // Возвращает арксинус в радианах
 
         // Свойства объекта MATH
-        toConsole(Math.E); // Константа Эйлера, то есть экспонента, то есть 2.718
-        toConsole(Math.LN2); // Натуральный логарим
-        toConsole(Math.LOG2E); // Логарифм Е по основанию 2
-        toConsole(Math.LOG10E); // Логарифм Е по основанию 10
-        toConsole(Math.PI); // Число пи
-        toConsole(Math.SQRT2); // Квадратный корень из 2
-        toConsole(Math.SQRT1_2); // Квадратный корень из 1/2
-        toConsole(Math.LN10); // Натуральный логарифм 10
+        console.log(Math.E); // Константа Эйлера, то есть экспонента, то есть 2.718
+        console.log(Math.LN2); // Натуральный логарим
+        console.log(Math.LOG2E); // Логарифм Е по основанию 2
+        console.log(Math.LOG10E); // Логарифм Е по основанию 10
+        console.log(Math.PI); // Число пи
+        console.log(Math.SQRT2); // Квадратный корень из 2
+        console.log(Math.SQRT1_2); // Квадратный корень из 1/2
+        console.log(Math.LN10); // Натуральный логарифм 10
       </script>
     </body>
   </html>

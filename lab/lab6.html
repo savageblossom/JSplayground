@@ -10,11 +10,7 @@
     <p id="txt">Lorem ipsum dolor sit amet</p>
 
     <script type="text/javascript">
-      function toConsole(something){
-        return console.log(something);
-      }
-
-      toConsole("=== Упражнение 1 ===");
+      console.log("=== Упражнение 1 ===");
         function isGreater(a, b) {
           if(a > b) { return a+" is greater than "+b}
           else { return a+" is not greater than "+b};
@@ -22,7 +18,7 @@
         console.log(isGreater(6,5));
 
 
-      toConsole("=== Упражнение 2 ===");
+      console.log("=== Упражнение 2 ===");
         function sort(){
           var arr = arguments,
               numHandler;
@@ -37,14 +33,14 @@
           }
           return arr;
         }
-      toConsole(sort(5, 2, 4, 7, 9, 0, 3));
+      console.log(sort(5, 2, 4, 7, 9, 0, 3));
 
 
-      toConsole("=== Упражнение 3 ===");
-      if(0) { toConsole('123'); }
+      console.log("=== Упражнение 3 ===");
+      if(0) { console.log('123'); }
       // Не вывелось, поскольку 0 - это false
 
-      toConsole("=== Упражнение 4 ===");
+      console.log("=== Упражнение 4 ===");
         function findMax() {
           var arr = arguments,
               maxNum = 0;
@@ -55,77 +51,77 @@
             }
           return maxNum;
         }
-      toConsole(findMax(2, 5, 1, 666, 4, 2, 2, 3, 5, 7, 888));
+      console.log(findMax(2, 5, 1, 666, 4, 2, 2, 3, 5, 7, 888));
 
 
-      toConsole("=== Упражнение 5-6 ===");
+      console.log("=== Упражнение 5-6 ===");
       let ageFa = 61,
           ageMa = 61;
-      if(ageFa === ageMa) toConsole('Мои родители - ровесники')
-      else if(ageFa > ageMa) toConsole('Папа старше мамы')
-      else toConsole('Мама старше папы')
+      if(ageFa === ageMa) console.log('Мои родители - ровесники')
+      else if(ageFa > ageMa) console.log('Папа старше мамы')
+      else console.log('Мама старше папы')
 
 
-      toConsole("=== Упражнение 7 ===");
+      console.log("=== Упражнение 7 ===");
       let num1 = +prompt('enter number 1', ''),
           sign = prompt('enter sign,', ''),
           num2 = +prompt('enter number 2', '');
 
       switch(sign){
         case '+':
-          toConsole(num1+num2);
+          console.log(num1+num2);
           break;
         case '-':
-          toConsole(num1-num2);
+          console.log(num1-num2);
           break;
         case '*':
-          toConsole(num1*num2);
+          console.log(num1*num2);
           break;
         case '/':
           if(num1===0){
-            toConsole('error: division by zero');
+            console.log('error: division by zero');
             break;
           } else {
-            toConsole(num1/num2);
+            console.log(num1/num2);
             break;
           }
       }
 
           // 6
-     toConsole('=== Упражнение 8 ===');
+     console.log('=== Упражнение 8 ===');
      function equalThousand(num, meth) {
        if(meth===0){
-         if(num === 1000) toConsole('Верно')
-         else{ toConsole('Неверно')};
+         if(num === 1000) console.log('Верно')
+         else{ console.log('Неверно')};
        }
        else if(meth===1) {
-         (num === 1000) ? toConsole('Верно') : toConsole('Неверно');
+         (num === 1000) ? console.log('Верно') : console.log('Неверно');
        }
        else{
-         toConsole('if или тернарный? \n 0 - if \n 1 -тернарный');
+         console.log('if или тернарный? \n 0 - if \n 1 -тернарный');
        }
      }
      equalThousand(1000, 1);
 
      // 7
-     toConsole('=== Упражнение 8 ===');
+     console.log('=== Упражнение 8 ===');
      let a = "asd";
 
      switch ( a ) {
        case 9:
-         toConsole('Это меньше а');
+         console.log('Это меньше а');
          break;
        case 10:
-         toConsole('Это a');
+         console.log('Это a');
          break;
        case 11:
-         toConsole('Это больше а');
+         console.log('Это больше а');
          break;
        default:
-         toConsole('Это не a');
+         console.log('Это не a');
      }
 
-     toConsole('=== Упражнение 9 ===');
+     console.log('=== Упражнение 9 ===');
      function fillWeek(lang){
        /*if(lang==="ru") {
          arr = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -150,37 +146,37 @@
            return "Введите язык дней недели!".split(" ");
        }
      }
-     toConsole(fillWeek('ru'));
+     console.log(fillWeek('ru'));
 
 
-     /*toConsole('=== Упражнение 10 ===');
+     /*console.log('=== Упражнение 10 ===');
      let num1 = parseInt(prompt('введите число 1', '')),
          sign = prompt('введите действие с числами', ''),
          num2 = parseInt(prompt('введите число 2', ''));
 
      switch(sign) {
        case '+':
-         toConsole(num1+num2);
+         console.log(num1+num2);
          break;
        case '-':
-         toConsole(num1-num2);
+         console.log(num1-num2);
          break;
        case '*':
-         toConsole(num1*num2);
+         console.log(num1*num2);
          break;
        case '/':
          if(num1===0) {
-           toConsole('error: division by Zero');
+           console.log('error: division by Zero');
            break;
          } else {
-           toConsole(num1/num2);
+           console.log(num1/num2);
            break;
          }
        default:
-         toConsole('Введите действие (+, -, * или /)!');
+         console.log('Введите действие (+, -, * или /)!');
      } */
 
-     toConsole('=== Упражнение 11 ===');
+     console.log('=== Упражнение 11 ===');
      function howManyLetters(word) {
        word = word.split('');
 
@@ -191,7 +187,7 @@
        }
        return a;
      }
-     toConsole(howManyLetters('aafasf'));
+     console.log(howManyLetters('aafasf'));
 
     </script>
   </body>
