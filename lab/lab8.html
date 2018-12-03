@@ -4,14 +4,146 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lab6-7</title>
+    <title>Lab8-9</title>
+    <style>
+    button{ min-width: 100px; margin: 10px auto; display: block; font-size: 50px; border-radius: 5px; text-transform: uppercase; cursor: pointer;}
+    body{padding: 5% 0 0 0}
+    </style>
   </head>
   <body>
-    <p id="txt">Lorem ipsum dolor sit amet</p>
-
+    <button onclick="exercise5()">5 упражнение</button>
+    <button onclick="exercise6()">6 упражнение</button>
+    <button onclick="exercise8()">8 упражнение</button>
+    <button onclick="exercise10()">10 упражнение</button>
+    <button onclick="exercise11()">11 упражнение</button>
     <script type="text/javascript">
-      console.log('==упражнение 1==')
+      console.log(`== упражнение 1==`); // 1
+      do {
+        console.log('yes');
+      } while(false)
 
+      console.log(`== упражнение 2==`); // 2
+      for(let i = 0; i<=100; i+=20){
+        console.log('Число: '+i);
+      }
+
+      console.log(`== упражнение 3==`); // 3
+      let A = [12, -45, 67, 1, 90, 666];
+      for(let i = 0; i<=A.length; i++){
+        if(A[i]%2==0){
+          console.log(A[i]);
+        }
+      }
+
+      console.log(`== упражнение 4==`); { // 4
+      A,B = [];
+      for(let i = 0; i<=5; i++){
+        A[i] = Math.floor(Math.random()*100);
+      }
+      console.log(A);
+      for(let i = A.length-1; i>=0; i--){
+        B[A.length-1-i] = A[i];
+      }
+      console.log(B);}
+
+          // 5
+      function exercise5(){
+      A = [];
+      let sum = 0;
+      for(let i = 0; i<=4; i++){
+        A[i] = +prompt(`введите число массива №${i}: `);
+        sum += A[i];}
+      console.log(`== упражнение 5== \n
+        Сумма элементов массива [${A}]: ${sum}`);}
+
+            // 6
+      function exercise6(){
+        let arr = [], mult = 1,
+            P = +prompt('введите длину массива');
+        for(let i = 0; i <= P-1; i++){
+          arr[i] = Math.floor(Math.random()*100);
+          mult*=arr[i];
+        }
+        console.log(`== упражнение 6== \n
+          Результат умножения всех элементов массива [${arr}]: ${mult}`);
+      }
+
+      console.log(`== упражнение 7==`);  //7
+      var arr = [-8, 2, 0, -2, -2, -7, 0, -3, 4, 6, 12, 0, -3, -7, -4, 4, 3, 5, -4, -2],
+          sumNegative = 0, countOfNegative = 0;
+      for(let i = 0; i <= arr.length-1; i++){
+        if(arr[i]<0){
+          sumNegative += arr[i];
+          countOfNegative++;
+        }
+      }
+      console.log(`Среднее арифметичское отриц. чисел массива: ${sumNegative/countOfNegative}`);
+
+          //8
+      function exercise8(){
+        console.log(`==упражнение 8==`);
+        let lengthOfArray = +prompt('Введите длину массива'),
+            key = +prompt('Введите число для поиска'),
+            arr = [],
+            succ = [],
+            succNum = 0;
+        for(let i = 0; i <= lengthOfArray-1; i++){
+          arr[i] = Math.floor(Math.random()*10);
+          if(arr[i]==key) {
+            succ[succNum] = i;
+            succNum++;
+          }
+        }
+        if(succ.length==0) console.log('Искомого значения нет!')
+        else console.log(`Изначальный массив: ${arr}\nИндексы совпадения KEY: ${succ}`);}
+
+        // 9
+        console.log(`==упражнение 9==`);{
+        var negativeArr = [],
+            positiveArr = [];
+        for(let i = 0; i <= arr.length-1; i++){
+          if(arr[i]<0) negativeArr.push(arr[i])
+          else if(arr[i]>0) positiveArr.push(arr[i])
+
+        }
+        console.log(`Массив: ${arr}`);
+        console.log(`Положительные числа: ${positiveArr}`);
+        console.log(`Отрицательные числа: ${negativeArr}`);}
+
+
+        //10
+        function exercise10(){
+          console.log(`==упражнение 10==`);
+          let lengthOfArray = +prompt('Введите длину массивов'),
+              manualArray = [],
+              autoArray = [],
+              sumOfBoth = [];
+          for(let i = 0; i <= lengthOfArray-1; i++){
+            manualArray[i] = +prompt(`Введите число для массива[${i}]`);
+            autoArray[i] = Math.floor(Math.random()*100);
+            sumOfBoth.push(manualArray[i]+autoArray[i]);
+          }
+          console.log(`Вручную введённый массив: ${manualArray}`);
+          console.log(`Сгенерированный массив: ${autoArray}`);
+          console.log(`Суммы обоих: ${sumOfBoth}`);
+        }
+
+        //11
+        function exercise11(){
+          console.log(`==упражнение 11==`);
+          let leastNum = 0,
+              greatestNum = 0,
+              lengthOfArray = +prompt('Введите длину массивов'),
+              array = [];
+          for(let i = 0; i <= lengthOfArray-1; i++){
+            array[i] = Math.floor(Math.random()*100-50);
+            if((array[i]<leastNum)&&array[i]<0) leastNum = array[i]
+            else if ((array[i]>greatestNum)&&array[i]>0) greatestNum = array[i]
+          }
+          console.log(`Искомый массив: ${array}`);
+          console.log(`Наибольшее положительное число: ${greatestNum}`);
+          console.log(`Наименьшее отрицательное число: ${leastNum}`);
+        }
     </script>
   </body>
 </html>
