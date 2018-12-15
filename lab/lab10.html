@@ -11,14 +11,65 @@
     </style>
   </head>
   <body>
+    <button onclick="exercise6()">6 упражнение</button>
+    <button onclick="exercise7()">7 упражнение</button>
     <script>
       console.log('== упражнение 1==');
-      i = 0;
+      {let i = 0;
       while(i<3){
-        console.log('число i = '+ i);
-        i++;
+        console.log('число i = '+ i++);
+      }}
+
+      console.log('== упражнение 2==');
+      {let i = 100;
+        while(i>=0){
+          console.log('Число: '+ i);
+          i-=20;
+        }
       }
 
+      console.log('== упражнение 3==');
+      let array = [], sum = 0, i = 0;
+      while(i <= 9){
+        if(array.length == 9) array.push(0);
+        else array.push(Math.round(Math.random()*100/2));
+        sum += array[i];
+        i++
+      }
+      console.log(`Сумма всех элементов: ${sum}`);
+
+      console.log('== упражнение 4==');
+      {let i=10;
+        while(i < 15) {
+          i = i+1;
+          console.log(i);
+        }
+      }
+      console.log('== упражнение 5==');
+      {
+        for(let i = 10; i<=15; i++){
+          console.log(i);
+        }
+      }
+      function exercise6(){
+        console.log('== упражнение 6==')
+        let val, s = 0;
+        do{
+          val = +prompt('enter the number');
+          s += val*val;
+        } while(s<=100)
+        console.log(`s = ${s}`);
+      }
+      function exercise7(){
+        console.log('== упражнение 6==')
+        let val, s = 0;
+        do{
+          val = +prompt('enter the number');
+          if(val>0) s += val;
+          else s += val * val;
+        } while(s<=100)
+        console.log(`s = ${s}`);
+      }
 
     </script>
   </body>
