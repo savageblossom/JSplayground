@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab13</title>
+    <style>
+    button, input[type='button']{ min-width: 100px; margin: 10px auto; display: block; font-size: 50px; border-radius: 5px; text-transform: uppercase; cursor: pointer;}
+    body{padding: 5% 0 0 0}
+    </style>
+  </head>
+  <body>
+    <input type='button' value='УПРАЖНЕНИЕ 3' onclick="exercise3()">
+    <input type='button' value='УПРАЖНЕНИЕ 6' onclick="exercise6()">
+    <script>
+      console.log('-- Упражнение 1 --');
+      var user = { name: 'vasya', age: 17};
+      var admin = user;
+      admin.name = 'petya';
+      console.log(user.name); // "petya", потому при копировании переменной с
+      // объектом - копируется ссылка на объект, а объект остаётся в ед. экземпляре
+
+      console.log('-- Упражнение 2 --');
+      user = { name: 'vasya', age: 17};
+      var userClone = {};
+      for(let key in user){
+        userClone[key] = user[key];
+      }
+      console.log(userClone.name); // 'vasya', потому что был скопирован сам
+      // объект, а не ссылка на него
+
+
+      function exercise3(){
+        console.log('-- Упражнение 3 --');
+        let arr = [], valueToInsert, arrSum = 0;
+        function insertion(valueToInsert){
+          arr.push(valueToInsert);
+          if(valueToInsert == '') return console.log(arrSum);
+          valueToInsert = +prompt(`Введите значение`);
+          arrSum += valueToInsert;
+          insertion(valueToInsert);
+        }
+        insertion();
+      }
+
+      console.log('-- Упражнение 4 --');
+      var arr=[12,12,45];
+      var Arr=arr;
+      Arr[2]=1000;
+      //console.log(arr); // [ 12, 12, 1000 ]
+      //console.log(Arr); // [ 12, 12, 1000 ]
+      console.log(`Клон? ${Arr!=arr}`); // true
+      // потому что при копировании переменной с массивом - копируется
+      // только ссылка на него, а сам массив остаётся в едином экземпляре
+
+      console.log('-- Упражнение 5 --');
+      arr=[12,12,45];
+      var i = 0;
+      arr.forEach(function(item){
+        Arr[i] = item;
+        i++;
+      })
+      Arr[2]=1000;
+      //console.log(arr); // [ 12, 12, 45 ]
+      //console.log(Arr); // [ 12, 12, 1000 ]
+      console.log(`Клон? ${Arr!=arr}`); // false
+
+      function exercise6(){
+      console.log('-- Упражнение 6 --');
+        let bankUser = {
+          'username': prompt('Введите имя вкладчика'),
+          'deposit': +prompt('Введите размер вклада (в рублях)'),
+          'time': +prompt('Введите срок вклада (в месяцах)'),
+          'income': function(){
+            let incomeAmount, percent;
+            if((this.time >= 1 && this.time <= 12) && (this.deposit >= 100 && this.deposit <= 10000)) {
+              percent = 0.12/12 * this.time;
+              incomeAmount = this.deposit * percent;
+            }
+            else if((this.time > 12 && this.time <= 36) && (this.deposit >= 10000)) {
+              percent = 0.22/12 * this.time;
+              incomeAmount = this.deposit * percent;
+            }
+            else { return 'Такая операция недопустима.'};
+            return `Имя вкладчика: ${this.username}
+Изначальный взнос: ${this.deposit}
+Доход составил: ${incomeAmount} (${percent}%)
+Всего средств: ${incomeAmount = this.deposit + incomeAmount}`;
+          }
+        }
+
+      console.log(bankUser.income());
+      }
+    </script>
+  </body>
+</html>
