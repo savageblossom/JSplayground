@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab11</title>
+    <style>
+    button, input[type='button']{ min-width: 100px; margin: 10px auto; display: block; font-size: 50px; border-radius: 5px; text-transform: uppercase; cursor: pointer;}
+    body{padding: 5% 0 0 0}
+    </style>
+  </head>
+  <body>
+    <input type='button' value='УПРАЖНЕНИЕ 1' onclick="sum(5, 4)">
+    <input type='button' value='УПРАЖНЕНИЕ 2' onclick="twoPow()">
+    <input type='button' value='УПРАЖНЕНИЕ 3' onclick="averageArr()">
+    <input type='button' value='УПРАЖНЕНИЕ 4' onclick="yourAge()">
+    <input type='button' value='УПРАЖНЕНИЕ 5' onclick="maxValue()">
+    <script>
+      function sum(a, b){
+        console.log('== упражнение 1==');
+        console.log(a+b);}
+
+      function twoPow(a){
+        console.log('== упражнение 2==');
+        a = Math.pow(+prompt('Введи число'), 2);
+        console.log(a);}
+
+      function averageArr(){
+        console.log('== упражнение 3==');
+        let arr = [2,4,6,8,10],
+            sum = 0;
+      //console.log(arr);
+        arr.forEach(function(item){
+            sum += item;
+          //console.log(sum);
+        });
+        sum = sum/arr.length;
+        console.log(sum);}
+
+      function yourAge(){
+        console.log('== упражнение 4==');
+        let age = prompt('Введите возраст')
+        if(age >= 1 && age <= 13) console.log(`${age} - детство`);
+        else if(age >= 14 && age <= 25) console.log(`${age} - юность`);
+        else if(age >= 26 && age <= 69) console.log(`${age} - зрелость`);
+        else if(age >= 70) console.log(`${age} - старость`);
+        else console.log(`Это не возраст`);}
+
+      function maxValue(){
+        console.log('== упражнение 5==');
+        let arr = [-2, 4, 216, -8, 10, -114, 14, 1],
+            maxValue = 0;
+        arr.forEach(function(item){
+          if(item>maxValue) maxValue = item;
+        });
+        console.log(maxValue);}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab12</title>
+    <style>
+    button, input[type='button']{ min-width: 100px; margin: 10px auto; display: block; font-size: 50px; border-radius: 5px; text-transform: uppercase; cursor: pointer;}
+    body{padding: 0 0 0 0}
+    .calculate-form {
+      width: 500px;
+      background: #e8e5e5;
+      margin: 0 auto;
+      box-shadow: 0 0 2px #343434;
+      text-align: center;
+      border-radius: 15px;
+      padding: 5px;
+    }
+    table{display: inline-block;}
+    table p {text-align: right;}
+    .highlight{
+      background: #d2fcff;
+    }
+    .calculate-form input[type='button']{
+      font-size: 20px;
+      height: 50px;
+      float: left;
+      margin: 15px 30px;
+    }
+    .buttons{
+      width: 100%;
+      height: 80px;
+    }
+    #output{
+      text-decoration: underline;
+      font-family: Tahoma;
+    }
+    </style>
+  </head>
+  <body>
+    <input type='button' value='УПРАЖНЕНИЕ 2' onclick="exercise2();">
+    <input type='button' value='УПРАЖНЕНИЕ 3' onclick="exercise3();">
+    <div class="calculate-form">
+      <h1>calculate density</h1>
+      <table>
+        <tr>
+          <th><p>country name:</p></th>
+          <th><p><input type="text" id="name"></p></th>
+        </tr>
+        <tr>
+          <th><p>area:</p></th>
+          <th><p><input type="text" id="area"></p></th>
+        </tr>
+        <tr>
+          <th><p>population:</p></th>
+          <th><p><input type="text" id="population"></p></th>
+        </tr>
+        <tr>
+          <th><p>capital:</p></th>
+          <th><p><input type="text" id="capital"></p></th>
+        </tr>
+        <tr class="highlight">
+          <th><p>output:</p></th>
+          <th><span id="output"></span></th>
+        </tr>
+      </table>
+      <div class="buttons">
+        <input type="button" value="density?" onclick="calculate();">
+        <input type="button" value="name?" onclick="getName()">
+        <input type="button" value="capital?" onclick="getCapital()">
+      </div>
+      <div class="buttons" >
+        <input type="button" value="set default" onclick="setDefault()" style="margin: 0 auto; float: none;">
+      </div>
+    </div>
+    <script>
+
+      function Student(name, surname, age, isAlive){
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.isAlive = isAlive;
+      }
+
+      console.log(`-- Упражнение 1 --`);
+      var student = new Student('Vasya', 'Petrov', 18, true);
+      console.log(student);
+
+      function exercise2(){
+        console.log(`-- Упражнение 2 --`);
+        let ratings = {
+          'vasya': 3,
+          'asya': 4,
+          'petya': 5,
+          'lyuda': 4,
+        }
+
+        function average(array){
+          let sum = 0;
+          if(Object.keys(array).length === 0) console.log(`Объект пустой!`);
+          else { Object.values(array).forEach(function(item){
+              if(typeof(item) == 'number') sum += item;
+            })
+            console.log(sum/Object.keys(array).length);
+          }
+        }
+        average(ratings);
+      }
+
+      function exercise3(){
+        console.log(`-- Упражнение 3 --`);
+        let salaries = {
+          'vasya': 15000,
+          'asya': 15500,
+          'petya': 45000,
+          'lyuda': 120000,
+        }, maxNum = 0;
+
+        if (Object.keys(salaries).length === 0) console.log(`Нет сотрудников!`)
+        else {
+          for(let key in salaries) {
+            if(maxNum < salaries[key]) maxNum = salaries[key]
+          }
+          console.log(maxNum);
+        }
+      }
+
+      console.log(`-- Упражнение 4 --`);
+      function Country(name, population, area, capital){
+        this.name = name;
+        this.population = population; // in millions
+        this.area = area; // in mi²
+        this.capital = capital;
+        this.density = function() {
+          return `Плотность населения страны ${this.name}: ${Math.floor(this.population/this.area)} чел. на 1 км²`;
+        }
+      }
+      let Ukraine = new Country('Ukraine', 45000000, 233062, 'Kyiv');
+      console.log(Ukraine.density());
+
+      function calculate(){
+        let area = document.getElementById('area').value,
+            population = document.getElementById('population').value;
+        document.getElementById('output').innerText = Math.floor(population/area);
+      }
+      function getName(){
+        document.getElementById('output').innerText = document.getElementById('name').value;
+      }
+      function getCapital(){
+        document.getElementById('output').innerText = document.getElementById('capital').value;
+      }
+      function setDefault(){
+        document.getElementById('name').value = Ukraine.name;
+        document.getElementById('population').value = Ukraine.population;
+        document.getElementById('area').value = Ukraine.area;
+        document.getElementById('capital').value = Ukraine.capital;
+      }
+    </script>
+  </body>
+</html>
