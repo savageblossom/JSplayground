@@ -52,7 +52,9 @@
         let arr = [-2, 4, 216, -8, 10, -114, 14, 1],
             maxValue = 0;
         arr.forEach(function(item){
-          if(item>maxValue) maxValue = item;
+          if(item >= -10 && item <= 10) {
+            if(item>maxValue) maxValue = item;
+          }
         });
         console.log(maxValue);}
     </script>
