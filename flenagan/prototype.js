@@ -1,3 +1,4 @@
+console.log(`Begin of function as constructors`)
 function Point(x, y) {
   this.x = x;
   this.y = y;
@@ -8,4 +9,8 @@ Point.prototype.r = function() {
     Math.pow(this.x, 2) + Math.pow(this.y, 2)
   );
 }
-console.log(p.r())
+Point.prototype.ss = function(x) {
+  return x;
+}
+console.log(p.ss(3))
+console.log(`End of function as constructors`)
