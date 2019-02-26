@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // Если ничего не менять в коде, то выведет ошибку о том, что переменная 'a' не объявлена:
+    // "ReferenceError: a is not defined"
+
+
+    var z = -10;
+    // Function Declaration
+    function displayVar(){
+      console.log(z+z);
+      // Было:
+      // console.log(a+a);
+      // что вызывало ошибку
+    }
+
+
+    // Function Expression
+    var _doTheSameButAsExpression = function() {
+      console.log(z+z);
+    };
+
+
+    // "New" Function
+    var _doTheSameButAsNew = new Function('console.log(z+z)');
+
+
+    // Arrow Function
+    var _doTheSameButAsArrow = () => {
+      console.log(z+z);
+    };
+
+
+    // Anonymous Function (IIFE)
+    (function() {
+      console.log(z+z);
+    })();
+
+
+    // Anonymous Arrow Function
+    (() => {
+      console.log(z+z);
+    })();
+
+
+    // Мурадасилов У.Д. И1-18
+  </script>
+</body>
+</html>

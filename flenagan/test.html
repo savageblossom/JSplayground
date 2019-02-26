@@ -5,18 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+    ul {
+      float: left;
+      overflow: hidden;
+    }
+    div {
+      height: 100px;
+    }
+  </style>
 </head>
 <body>
-  <p>wow</p>
-  <p>wow</p>
-  <p>wow</p>
-  <p>wow</p>
-  <p>wow</p>
-  <p>wow</p>
-  <p>wow</p>
-  <p>wow</p>
-  <p>wow</p>
-  <canvas id="canvas" width="300" height="300"></canvas>
+  <div>
+    <ul>
+      <li>wow</li>
+      <li>wow</li>
+      <li>wow</li>
+      <li>wow</li>
+      <li>wow</li>
+    </ul>
+    <ul>
+      <li>wow</li>
+      <li>wow</li>
+      <li>wow</li>
+      <li>wow</li>
+    </ul>
+  </div>
+
   <!-- <script src='prototype.js'></script>
   <script src='class.js'></script>
   <script src='object.js'></script>
@@ -63,13 +78,70 @@ normalizedArray.join('')
   if(Math.sqrt(x)%Math.round(Math.sqrt(x))== 0)
   console.log( Math.sqrt(x)%Math.round(Math.sqrt(x))== 0 );
   else console.log('asd')
-  console.log(Math.floor(Math.sqrt(12)) + 1)*/
+  console.log(Math.floor(Math.sqrt(12)) + 1)
 
   var arr = ['neverv', 'exthin', 'eheart', 'withid', 'lewo'];
   for(var i = 0; i <= arr.length-1; i++) {
     arr[i] = arr[i].split('');
   }
   console.log('tasneyinicdsmiohooelntuillibsuuml'.length)
+
+  const CODON_LIST = {
+    'AUG': 'Methionine',    'UUU': 'Phenylalanine',   'UUC': 'Phenylalanine',
+    'UUA': 'Leucine',       'UUG': 'Leucine',         'UCU': 'Serine',
+    'UCC': 'Serine',        'UCA': 'Serine',          'UCG': 'Serine',
+    'UAU': 'Tyrosine',      'UAC': 'Tyrosine',        'UGU': 'Cysteine',
+    'UGC': 'Cysteine',      'UGG': 'Tryptophan',
+  }
+
+  var a = 'UGC',
+      b = Object.entries(CODON_LIST).find(function(e){
+        return e[0] == a;
+      });
+  console.log(b[0]);
+
+
+  var triangleArray = [[1], [1, 1], [1, 2, 1]];
+  for(var i = 3; i < 25; i++) {
+    triangleArray[i] = [];
+    for(var j = 0; j < triangleArray[i-1].length-1; j++) {
+      triangleArray[i][j] = triangleArray[i-1][j] + triangleArray[i-1][j+1];
+    }
+    triangleArray[i].unshift(1);
+    triangleArray[i].push(1);
+  }
+
+  console.log(triangleArray)
+  */
+
+  function biggest(num, prodOf) {
+    var arr = [],
+        multHandler = 1,
+        biggestMult = 0;
+
+    for(var i = 0; i <= num.length-1; i++) {
+      var numHandler = num.slice(i, i+prodOf).split('');
+
+      arr.push(numHandler);
+
+      for(var j = 0; j <= prodOf-1; j++) {
+        if(numHandler.length == prodOf) {
+          if(isNaN(+numHandler[j]) || +numHandler[j] < 0) throw('Invalid input.');
+          if(j == 0) {
+            multHandler = 0;
+            multHandler = ++multHandler * numHandler[j]
+          }
+          else multHandler *= numHandler[j];
+
+        }
+      }
+      if(multHandler > biggestMult) biggestMult = multHandler;
+    }
+    return biggestMult
+  }
+
+console.log(biggest('924912', 3));
+console.log(isNaN('0'));
   </script>
 </body>
 </html>
