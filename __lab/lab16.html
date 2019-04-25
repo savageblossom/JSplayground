@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab16</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+    button, input[type='button']{ min-width: 100px; margin: 10px auto; display: block; font-size: 50px; border-radius: 5px; text-transform: uppercase; cursor: pointer;}
+    body{padding: 5% 0 0 0}
+    input[type='button'] {
+      font-size: 35px;
+      transition: background-color 1s, font-size 1s;
+    }
+    input[type='button']:hover {
+      background-color: cyan;
+      font-size: 75px;
+    }
+    </style>
+
+  </head>
+  <body>
+    <input class='btn btn-primary' type='button' value='Задание 2' onclick="task2()">
+    <input class='btn btn-primary' type='button' value='Задание 5' onclick="task5()">
+    <script>
+    /*
+      function task2() {
+        // A)
+        for(var i = 1; i <= 5; i++) {
+          console.log(i);
+        }
+        for(i = 1; i <= 5; i++) {
+          console.log(i*2);
+        }
+        // Из-за того, что переменная i объявляется внутри параметров цикла(-ов)
+        // с помощью let, то её видно только внутри этих циклов.
+        // Если попытаться вывести её вне этих циклов, то интерпретатор
+        // сообщит об ошибке, что она (переменная i) не объявлена (not defined)
+         alert(i);
+        // Чтоб это исправить, нужно вместо let использовать var
+
+        // B)
+        var num = 10;
+        if(true) {
+          var num = 50;
+          alert(num);
+        }
+        alert(num);
+
+        // ...
+      } */
+
+      function task5() {
+        var n = +prompt('?');
+        (() => {
+          if(n > 0) {
+            console.log("+");
+          }
+          else {
+            console.log("-");
+          }
+        })()
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+  </body>
+</html>

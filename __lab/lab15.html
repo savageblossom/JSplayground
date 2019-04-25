@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab15</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+    button, input[type='button']{ min-width: 100px; margin: 10px auto; display: block; font-size: 50px; border-radius: 5px; text-transform: uppercase; cursor: pointer;}
+    body{padding: 5% 0 0 0}
+    input[type='button'] {
+      font-size: 35px;
+      transition: background-color 1s, font-size 1s;
+    }
+    input[type='button']:hover {
+      background-color: cyan;
+      font-size: 75px;
+    }
+    </style>
+
+  </head>
+  <body>
+    <input class='btn btn-primary' type='button' value='Задание 4' onclick="task4()">
+    <input class='btn btn-primary' type='button' value='Задание 5' onclick="task5()">
+    <input class='btn btn-primary' type='button' value='Задание 6' onclick="task6()">
+    <input class='btn btn-primary' type='button' value='Задание 7' onclick="task7()">
+    <script>
+      function task4() {
+        if(confirm('Declaration?')) {
+          function areaDeclaration(a, b) {
+            return a * b;
+          }
+          console.log(areaDeclaration(2, 3));
+        }
+        else if(confirm('Expression?')){
+          var areaExpression = function(a, b) {
+            return a * b;
+          }
+          console.log(areaExpression(2, 3));
+        }
+        else { console.log('Nothing to do'); }
+      }
+
+      function task5() {
+
+        // "undefinedValera"
+        // Потому что на шаге вызова функции переменная объявлена,
+        // но не имеет присвоенного значения
+
+        sayHi('Valera');
+        var phrase = 'Hi, ';
+        function sayHi(name) {
+          alert(phrase + name);
+        }
+      }
+
+      function task6() {
+        var value = 0;
+        function f() {
+          if(1) {
+            value = true;
+          } else {
+            var value = false;
+          }
+          alert(value);
+        }
+
+        f();
+      }
+
+      function task7() {
+        // console.log(window);
+        function test() {
+          console.log(window);
+          var window = 5;
+          console.log(window);
+        }
+        test();
+      }
+    </script>
+  </body>
+</html>

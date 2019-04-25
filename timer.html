@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .container {
+      width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    #timer {
+      display: block;
+      font-size: 36px;
+    }
+  </style>
+</head>
+<body>
+  <div class="timer-body container">
+    <span id="timer">00:00:00</span>
+    <button id="start" onclick="start();">Start</button>
+    <button id="pause" onclick="">Pause</button>
+    <button id="resume">Resume</button>
+  </div>
+
+  <script>
+    var startingTime = [0, 0, 0],
+        playFlag = true,
+        timerNode = document.getElementById('timer');
+
+    function pause() { playFlag = false; }
+    function resume() { playFlag = false; }
+
+    function start() {
+        setInterval(() => {
+        if(playFlag) {
+          if(startingTime[2] >= 60) {
+            startingTime[2] = 0;
+            startingTime[1]++;
+          }
+          if(startingTime[1] >= 60) {
+            startingTime[1] = 0;
+            startingTime[0]++;
+          }
+
+          startingTime[2]++;
+          if(startingTime[2].length == 1) startingTime[2] = "0" + startingTime[2];
+          if(startingTime[1].length == 1) startingTime[1] = "0" + startingTime[1];
+          if(startingTime[0].length == 1) startingTime[0] = "0" + startingTime[0];
+          timerNode.innerHTML = startingTime[0] + ":" + startingTime[1] + ":" + startingTime[2];
+        }
+      }, 1000)
+
+      /*
+      setInterval(() => {
+        var date = new Date();
+
+        timerNode.innerHTML = date.getSeconds() + ":" + date.getMilliseconds();
+      }, 1) */
+
+    }
+
+
+
+  </script>
+</body>
+</html>
