@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" type="image/x-icon" href="hammer.ico">
-    <title>Lab19</title>
+    <title>Lab20</title>
     <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <style>
     button, input{ min-width: 100px; margin: 10px auto; display: block; font-size: 50px; border-radius: 5px; text-transform: uppercase; cursor: pointer;}
@@ -85,6 +85,7 @@
           cords.z = customCords.z;
           return cords;
         }
+
         var me = ThreeD.createManually({
           x: 2,
           y: 4,
@@ -98,7 +99,8 @@
 
         ThreeD.sumCords = function() {
           var sumArr = [],
-              args = arguments;
+              args = arguments,
+              cords = new ThreeD;
           Object.defineProperty(this, "lengthOfThemAll", {
             get() {
               acc = 0;
@@ -124,8 +126,18 @@
             else { sumArr.push(0) }
           }
 
-        return sumArr;
+          cords.x = sumArr[0];
+          cords.y = sumArr[1];
+          cords.z = sumArr[2];
 
+          for(var i = 0; i != sumArr.length; i+=3){
+            if(typeof(sumArr[i+3]&&sumArr[i+4]&&sumArr[i+5])=='number') {
+              cords.x += sumArr[i+3];
+              cords.y += sumArr[i+4];
+              cords.z += sumArr[i+5];
+            };
+          }
+          return cords;
         }
 
         var meAndYou = ThreeD.sumCords(me, you);
@@ -136,7 +148,9 @@
       //   return arguments[0];
       // }
       // console.log(a({x: 1, b: 3, y: 4}))
-      //console.log(typeof({a: 5, b: 5})=='object')
+      // console.log(typeof({a: 5, b: 5})=='object')
+      // var aar = [1, 2, 3]
+      // console.log(typeof(aar[2])=='undefined')
 
     </script>
   </body>
