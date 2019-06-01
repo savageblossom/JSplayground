@@ -27,8 +27,8 @@
     <hr />
 
     <div class="graph-panel">
-      <p>Кол-во вершин: </p><input type="text" id="vertex">
-      <input class='' type='button' value='?' onclick="homeWerk1()">
+      <input class='' type='button' value='дз задание 1' onclick="homeWerk1()">
+      <input class='' type='button' value='дз задание 1' onclick="homeWerk2()">
     </div>
     <script>
       function task2() {
@@ -132,53 +132,30 @@
         // [[1, 2], [2, 3], [3, 4], [4, 1], [1, 3], [2, 4]]]
         // [1,2]
 
-        Array.prototype.equals = function (array) {
-          if(!array) return false;
+        // A)
+        // edgelist
+          var edgeList = [[1, 3], [2, 3], [3, 5], [4, 5], [1, 4]];
+        // vertexlist
+          var vertexList = [[4, 3], [3], [1, 2, 5], [3, 4], [1, 5]];
 
-          if(this.length != array.length) return false;
-
-          for(var i = 0, l = this.length; i < l; i++) {
-              if(this[i] instanceof Array && array[i] instanceof Array) {
-                if(!this[i].equals(array[i])) return false;
-
-            }
-            else if (this[i] != array[i]) {
-              return false;
-            }
+          function isAdjancent(graph, first, second) { // vertex ONLY
+            var FLAG = false;
+            graph[first-1].forEach(function(item){
+              if(item == second) FLAG = true
+            })
+            return FLAG;
           }
-          return true;
+
+          console.log(isAdjancent(vertexList, 1, 4))
+        }
+
+        function homeWerk2() {
+          // Можно представить дороги между городами, как массив ребёр графа
+          // И количество элементов этого массива и будет равняться кол-во дорог
+          // между городами
         }
 
 
-        var nodes = document.getElementById('vertex').value,
-            edges = (nodes*(nodes-1))/2,
-            graph = [];
-
-
-
-        while(graph.length < edges)
-          var i = 0;
-
-          graph.push([]);
-
-          var temp = [];
-          while(!(temp.equals(graph[i]))) {
-            temp.push(Math.floor(Math.random()*4)+1, Math.floor(Math.random()*4)+1);
-          }
-
-
-
-
-            console.log(temp)
-            graph[i].push(temp)
-
-
-        }
-
-
-        console.log(graph);
-
-      }
 
 
 
