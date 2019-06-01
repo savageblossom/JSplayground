@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="hammer.ico">
+    <title>Lab19</title>
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <style>
+    button, input{ min-width: 100px; margin: 10px auto; display: block; font-size: 50px; border-radius: 5px; text-transform: uppercase; cursor: pointer;}
+    body{padding: 5% 0 0 0}
+    input[type='text'] {
+      margin: 0 auto;
+      width: 150px;
+    }
+    #repeat {
+      width: 150px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 35px;
+      text-decoration: underline;
+    }
+    input[type='button'] {
+      font-size: 35px;
+      transition: background-color 1s, font-size 1s;
+    }
+    input[type='button']:hover {
+      background-color: cyan;
+      font-size: 75px;
+    }
+    </style>
+
+  </head>
+  <body>
+    <input class='btn btn-primary' type='button' value='Задание 1' onclick="task1()">
+    <input class='btn btn-primary' type='button' value='Задание 2' onclick="task2()">
+    <script>
+      // task1()
+        function Person(count) {
+          if(count == undefined) { count = 0; }
+          else { count++; }
+          Object.defineProperty(this, "count", {
+            get() {
+              return count++;
+            }
+          })
+        }
+
+        p = new Person();
+
+        function task1() {
+          console.log(p.count)
+        }
+
+
+      // function Paper() {
+      //   Paper.count++;
+      // }
+      // Paper.count = 3;
+      // Paper.showCount = function() {
+      //   console.log(this.count);
+      // }
+      //
+      // new Paper();
+      // new Paper();
+      // new Paper();
+      // Paper.showCount();
+
+      function task2() {
+        function ThreeD() {
+        }
+
+        ThreeD.createZero = function() {
+          var cords = new ThreeD;
+          cords.x = 0;
+          cords.y = 0;
+          cords.z = 0;
+          return cords;
+        }
+        ThreeD.createManually = function(customCords) {
+          var cords = new ThreeD;
+          cords.x = customCords.x;
+          cords.y = customCords.y;
+          cords.z = customCords.z;
+          return cords;
+        }
+        var me = ThreeD.createManually({
+          x: 2,
+          y: 4,
+          z: 8
+        });
+        var you = ThreeD.createManually({
+          x: 16,
+          y: 32,
+          z: 64
+        });
+
+        ThreeD.sumCords = function() {
+          var sumArr = [],
+              args = arguments;
+          Object.defineProperty(this, "lengthOfThemAll", {
+            get() {
+              acc = 0;
+              for(key in args) {
+                if(typeof(args[key]) == 'object') {
+                  for(innerKey in args[key]) {
+                    // console.log(args[key][innerKey])
+                    acc++;
+                  }
+                }
+                else { acc; }
+              }
+              return acc;
+            }
+          })
+
+          for(key in args) {
+            if(typeof(args[key]) == 'object') {
+              for(innerKey in args[key]) {
+                sumArr.push(args[key][innerKey])
+              }
+            }
+            else { sumArr.push(0) }
+          }
+
+        return sumArr;
+
+        }
+
+        var meAndYou = ThreeD.sumCords(me, you);
+        console.log(meAndYou)
+      }
+
+      // function a(x) {
+      //   return arguments[0];
+      // }
+      // console.log(a({x: 1, b: 3, y: 4}))
+      //console.log(typeof({a: 5, b: 5})=='object')
+
+    </script>
+  </body>
+</html>

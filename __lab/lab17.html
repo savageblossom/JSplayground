@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="shortcut icon" type="image/x-icon" href="hammer.ico">
     <title>Lab17</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <style>
     button, input[type='button']{ min-width: 100px; margin: 10px auto; display: block; font-size: 50px; border-radius: 5px; text-transform: uppercase; cursor: pointer;}
     body{padding: 5% 0 0 0}
@@ -22,48 +23,146 @@
   </head>
   <body>
     <input class='btn btn-primary' type='button' value='Задание 1' onclick="task1()">
-    <input class='btn btn-primary' type='button' value='Задание 1' onclick="task1()">
+    <input class='btn btn-primary' type='button' value='Задание 2' onclick="task2()">
+    <input class='btn btn-primary' type='button' value='Задание 3' onclick="task3()">
+    <input class='btn btn-primary' type='button' value='home work' onclick="homeWerk()">
     <script>
-      /*function cube(f, a) {
-        var result = [];
-        for(var i = 0; i != a.length; i++) {
-          result[i] = f(a[i]);
-          return result;
-        }
-        var f = function(x) {
-          return x * x * x;
-        }
-      }
-      var task1 = cube(3, 3); */
+      // function cube(f, a) {
+      //   var result = [];
+      //
+      //   for(var i = 0; i != a.length; i++) {
+      //     result[i] = f(a[i]);
+      //     return result;
+      //   }
+      //   var f = function(x) {
+      //     return x * x * x;
+      //   }
+      // }
+      // var task1 = cube(3, [1,2,3]);
+      // console.log(task1);
 
       // Prototypes
 
-      var elephant = {
-          jumps: false,
-          loves: 'banana',
-          trunk: true
-      },
-          animal = {
-          eatsHumans: true,
-          votedForTrump: true
+      //table-ask 1
+      function task1() {
+        var elephant = {
+            jumps: false,
+            loves: 'banana',
+            trunk: true
+        },
+            animal = {
+            eatsHumans: true,
+            votedForTrump: true
+        }
+        // 1)
+        elephant.__proto__ = animal;
+        // 2)
+        console.log('\nbefore deletion:')
+        for(var key in elephant) {
+          console.log(key);
+        }
+
+        console.log('\ncheck properties:')
+        console.log(elephant.hasOwnProperty('jumps'));
+        console.log(elephant.hasOwnProperty('loves'));
+        console.log(elephant.hasOwnProperty('trunk'));
+        console.log(elephant.hasOwnProperty('eatsHumans'));
+        console.log(elephant.hasOwnProperty('votedForTrump'));
+
+
+
+        delete elephant.loves;
+        delete elephant.eatsHumans;
+        console.log('\nafter deletion:')
+        for(var key in elephant) {
+          console.log(key);
+        }
       }
 
-      elephant.__proto__ = animal;
+      function task2() {
+        var pet = {
+          eats: function() {
+            this.full = true;
+          }
+        },  kitten = {
+          say: "meow",
+          __proto__: pet
+        }
 
-      for(var key in elephant) {
-        console.log(key);
+        // for(key in kitten) {
+        //   console.log(key)
+        // }
+
+        kitten.eats();
+        console.log(kitten.full)
+
       }
 
-      console.log(elephant.hasOwnProperty('jumps'));
-      console.log(elephant.hasOwnProperty('loves'));
-      console.log(elephant.hasOwnProperty('trunk'));
-      console.log(elephant.hasOwnProperty('eatsHumans'));
-      console.log(elephant.hasOwnProperty('votedForTrump'));
+      function task3() {
+        var person = {
+          eats: true,
+          legs: 2,
+          speaks: true,
+          learnedEnglish: function() {
+            this.knowsEnglish = true
+          }
+        }, dusya = {
+          gender: "f",
+          age: 18,
+        }, vasya = {
+          gender: "m",
+          loves: ['milk', 'fruits'],
+        };
 
-      delete elephant.loves;
-      delete elephant.eatsHumans;
-      for(var key in elephant) {
-        console.log(key);
+        dusya.__proto__ = person;
+        vasya.__proto__ = person;
+
+        console.log('\ndusya:')
+        for(key in dusya) {
+          console.log(key)
+        }
+        console.log('\nvasya:')
+        for(key in vasya) {
+          console.log(key)
+        }
+
+        dusya.learnedEnglish();
+        console.log('\ndusya now knows english:')
+        console.log(dusya.knowsEnglish);
+      }
+
+      function homeWerk() {
+        const car = {
+            usesPetrol: true,
+            details: ['engine', 'carburetor', 'steering wheel', 'wheels', 'doors', 'exhaust pipe'],
+            start: function() {
+              console.log("WROOM WROOM");
+            }
+        };
+
+        var bus = {
+          seatPlaces: 26,
+          isBig: true,
+          __proto__: car
+        },  autotruck = {
+          truckBodyCapacityInKg: 2000,
+          hasBigWheels: true,
+          fourWheelDrive: true,
+          __proto__: car
+        };
+
+        console.log("____bus properties____")
+        for(key in bus) {
+          console.log(key + " : " + bus[key]);
+        }
+        bus.start();
+
+        console.log("\n____autotruck properties____")
+        for(key in autotruck) {
+          console.log(key + " : " + autotruck[key]);
+        }
+        autotruck.start();
+
       }
     </script>
   </body>

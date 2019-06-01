@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="hammer.ico">
+    <title>Lab19</title>
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <style>
+    button, input{ min-width: 100px; margin: 10px auto; display: block; font-size: 50px; border-radius: 5px; text-transform: uppercase; cursor: pointer;}
+    body{padding: 5% 0 0 0}
+    input[type='text'] {
+      margin: 0 auto;
+      width: 150px;
+    }
+    #repeat {
+      width: 150px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 35px;
+      text-decoration: underline;
+    }
+    input[type='button'] {
+      font-size: 35px;
+      transition: background-color 1s, font-size 1s;
+    }
+    input[type='button']:hover {
+      background-color: cyan;
+      font-size: 75px;
+    }
+    </style>
+
+  </head>
+  <body>
+    <p id="repeat">0</p>
+    <input class='btn btn-primary' type='button' value='Click on me' onclick="repeatTask()">
+    <input class='btn btn-primary' type='button' value='Задание 1' onclick="task1()">
+    <input class='btn btn-primary' type='button' value='Задание 2' onclick="task2()">
+    <input class='btn btn-primary' type='button' value='Задание 3' onclick="task3()">
+    <script>
+      function repeatTask() {
+        var startingValue = +(document.getElementById('repeat').innerHTML),
+            valueToAdd = +(prompt('Enter your number PLZ'));
+        document.getElementById('repeat').innerHTML = startingValue + valueToAdd;
+      }
+
+    //
+    //   var o = {};
+    //   o.a = 1;
+    //   Object.defineProperty(o, "ASD", {
+    //     value: 1234,
+    //     enumerable: true,
+    //     configurable: false
+    //   })
+    //   for(key in o) {
+    //     console.log(key)
+    //   }
+    //
+
+      function task1() {
+        var o = {};
+        Object.defineProperty(o, 'a', {
+          value: 1,
+          writable: true,
+          configurable: true,
+          enumerable: true
+        })
+
+        console.log(o.a)
+      }
+      function task2() {
+        function Archiver() {
+          var temperature = null;
+          this.archive = [];
+
+          Object.defineProperty(this, 'temperature', {
+            get() {
+              console.log('get!');
+              return temperature;
+            },
+            set(value) {
+              temperature = value;
+              this.archive.push({val: temperature});
+            }
+          });
+          this.getArchive = function() { return this.archive; }
+        }
+
+        var arc = new Archiver();
+        arc.temperature;
+        arc.temperature = 11;
+        arc.temperature = 13;
+        console.log(arc.getArchive());
+      }
+
+      function task3() {
+        function User(fullName){
+          firstName = (fullName.split(' '))[0];
+          lastName = (fullName.split(' '))[1];
+          Object.defineProperty(this, "firstName", {
+            get() {
+              return firstName;
+            },
+            set(value) {
+              firstName = value;
+            }
+          })
+          Object.defineProperty(this, "lastName", {
+            get() {
+              return lastName;
+            },
+            set(value) {
+              lastName = value;
+            }
+          })
+        }
+
+        var vasya = new User("Денис Петров");
+        console.log(`${vasya.firstName} ${vasya.lastName}`);
+        vasya.firstName = "Валерий";
+        vasya.lastName = "Жмышенко";
+        console.log(`${vasya.firstName} ${vasya.lastName}`);
+      }
+
+  </script>
+  </body>
+</html>

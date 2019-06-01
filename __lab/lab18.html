@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lab17</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="shortcut icon" type="image/x-icon" href="hammer.ico">
+    <title>Lab18</title>
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <style>
     button, input[type='button']{ min-width: 100px; margin: 10px auto; display: block; font-size: 50px; border-radius: 5px; text-transform: uppercase; cursor: pointer;}
     body{padding: 5% 0 0 0}
@@ -22,48 +23,56 @@
   </head>
   <body>
     <input class='btn btn-primary' type='button' value='Задание 1' onclick="task1()">
-    <input class='btn btn-primary' type='button' value='Задание 1' onclick="task1()">
+    <input class='btn btn-primary' type='button' value='Задание 2' onclick="task2()">
     <script>
-      /*function cube(f, a) {
-        var result = [];
-        for(var i = 0; i != a.length; i++) {
-          result[i] = f(a[i]);
-          return result;
+      // var fn = (function() {
+      //   var num = 0;
+      //   return function() {
+      //     return ++num;
+      //   }
+      // })();
+      // console.log(fn())
+      // console.log(fn())
+
+      function task1() {
+        function User(firstName, secondName) {
+          this.name = firstName;
+          this.surname = secondName;
+          this.sayHi = function() {
+            console.log(`Hi, ${this.surname} ${this.name}!`);
+          }
         }
-        var f = function(x) {
-          return x * x * x;
+
+        var myPerson = new User('Denis', 'Petrov');
+        myPerson.sayHi();
+      }
+
+      function task2() {
+        function Calc() {
+          this.read = function() {
+            this.num1 = +prompt("enter first num: ");
+            this.num2 = +prompt("enter second num: ");
+          }
+          this.sum = function() {
+            return this.num1 + this.num2;
+          }
+          this.mul = function() {
+            return this.num1 * this.num2;
+          }
+          this.div = function() {
+            if(this.num2 != 0) {
+              return this.num1 / this.num2;
+            } else {
+              return 'error! division by zero';
+            }
+          }
         }
-      }
-      var task1 = cube(3, 3); */
 
-      // Prototypes
-
-      var elephant = {
-          jumps: false,
-          loves: 'banana',
-          trunk: true
-      },
-          animal = {
-          eatsHumans: true,
-          votedForTrump: true
-      }
-
-      elephant.__proto__ = animal;
-
-      for(var key in elephant) {
-        console.log(key);
-      }
-
-      console.log(elephant.hasOwnProperty('jumps'));
-      console.log(elephant.hasOwnProperty('loves'));
-      console.log(elephant.hasOwnProperty('trunk'));
-      console.log(elephant.hasOwnProperty('eatsHumans'));
-      console.log(elephant.hasOwnProperty('votedForTrump'));
-
-      delete elephant.loves;
-      delete elephant.eatsHumans;
-      for(var key in elephant) {
-        console.log(key);
+        var calc = new Calc();
+        calc.read();
+        console.log(calc.sum());
+        console.log(calc.mul());
+        console.log(calc.div());
       }
     </script>
   </body>
