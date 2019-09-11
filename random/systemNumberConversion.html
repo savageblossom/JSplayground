@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Number Conversion</title>
+    <style>
+      table {
+        width: 500px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <table>
+        <tr>
+          <th><p>Конвертируемое число: </p></th>
+          <th></th>
+          <th><p>Результат: </p></th>
+        </tr>
+        <tr>
+          <th><input type="text" id="numberToConvert"></th>
+          <th><input type="button" value="Convert" onclick="convert()"></th>
+          <th><input type="text" id="result" disabled></th>
+        </tr>
+        <tr>
+          <th>
+            <select name="digitToConvert" id="digitToConvert">
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="16">16</option>
+            </select>
+          </th>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      function convert() {
+        var numberToConvert   = document.getElementById('numberToConvert').value,
+            remainder         = 0,
+            numberConcat      = [],
+            digitFromConvert  = 10,
+            digitToConvert    = +(document.getElementById('digitToConvert').value),
+            resultField       = document.getElementById('result');
+
+
+        while(numberToConvert > digitToConvert) {
+          remainder = Math.floor(numberToConvert % digitToConvert);
+          numberConcat.push(convertHex(remainder, digitToConvert));
+          console.log(remainder + " ");
+          numberToConvert /= digitToConvert;
+        }
+        if(numberToConvert < digitToConvert) remainder = Math.floor(numberToConvert);
+        numberConcat.push(convertHex(remainder, digitToConvert))
+        numberConcat = numberConcat.reverse().join("");
+        resultField.value   = numberConcat;
+
+      }
+
+      function convertHex(remainder, digitToConvert) {
+          if(digitToConvert == 16) {
+                    if(remainder == 10) remainder = "A";
+                    if(remainder == 11) remainder = "B";
+                    if(remainder == 12) remainder = "C";
+                    if(remainder == 13) remainder = "D";
+                    if(remainder == 14) remainder = "E";
+                    if(remainder == 15) remainder = "F";
+                    return remainder;
+          }
+          else return remainder;
+      }
+
+      console.log(convertHex(15, 8))
+      // var num = 202,
+      //     div = 8,
+      //     remainder,
+      //     concat = [];
+      // while(num > div) {
+      //   console.log(num + ":" + div)
+      //   remainder = Math.floor(num%div);
+      //   concat.push(remainder);
+      //   num = Math.floor(num / div);
+      // }
+      // if(num < div) remainder = Math.floor(num);
+      // concat.push(remainder);
+      // console.log(concat);
+    </script>
+  </body>
+</html>
