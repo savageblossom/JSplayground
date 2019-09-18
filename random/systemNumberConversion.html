@@ -6,27 +6,62 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Number Conversion</title>
     <style>
-      table {
-        width: 500px;
+      .container {
+        width: 1000px;
         margin: 0 auto;
       }
+      p {
+        float: left;
+        margin: 0;
+      }
+      select {
+        float: left;
+        display: inline;
+        position: relative;
+        top: -5px;
+        margin: 0 10px;
+      }
+      #result {
+        font-size: 36px;
+      }
+      #result .digit {
+        font-size: 50%;
+        vertical-align: sub;
+      }
+
     </style>
   </head>
   <body>
     <div class="container">
       <table>
         <tr>
-          <th><p>Конвертируемое число: </p></th>
-          <th></th>
-          <th><p>Результат: </p></th>
+          <td><p>Конвертируемое число: </p></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <th><input type="text" id="numberToConvert"></th>
-          <th><input type="button" value="Convert" onclick="convert()"></th>
-          <th><input type="text" id="result" disabled></th>
+          <td><input type="text" id="numberToConvert"></td>
+          <td>
+          </td>
+          <td><input type="button" value="Convert" onclick="convert()"></td>
+          <!-- <td><input type="text" id="result" disabled></td> -->
         </tr>
         <tr>
-          <th>
+          <td>
+            <p>Конвертировать из разряда </p>
+            <select name="digitFromConvert" id="digitFromConvert">
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="16">16</option>
+            </select>
+            <p> в </p>
             <select name="digitToConvert" id="digitToConvert">
               <option value="2">2</option>
               <option value="3">3</option>
@@ -36,11 +71,13 @@
               <option value="7">7</option>
               <option value="8">8</option>
               <option value="9">9</option>
+              <option value="10">10</option>
               <option value="16">16</option>
             </select>
-          </th>
+          </td>
         </tr>
       </table>
+      <p id="result"></p>
     </div>
 
     <script>
@@ -48,23 +85,54 @@
         var numberToConvert   = document.getElementById('numberToConvert').value,
             remainder         = 0,
             numberConcat      = [],
-            digitFromConvert  = 10,
+            digitFromConvert  = document.getElementById('digitFromConvert').value,
             digitToConvert    = +(document.getElementById('digitToConvert').value),
-            resultField       = document.getElementById('result');
+            resultField       = document.getElementById('result'),
+            initialNumber     = numberToConvert,
+        // numberToConvert splitting
+            numInteger        = numberToConvert.split(".")[0],
+            integerConcat     = [],
+            numFraction       = numberToConvert.split(".")[1];
+            console.log(numFraction)
 
+        if(digitFromConvert == 10) {
+          if(numFraction) {
+            numberConcat.push('.');
+            while(numFraction >= digitFromConvert) {
+              remainder = Math.floor(numFraction % digitToConvert);
+              numberConcat.push(convertHex(remainder, digitToConvert));
+              numFraction /= digitToConvert;
+            }
+          }
 
-        while(numberToConvert > digitToConvert) {
-          remainder = Math.floor(numberToConvert % digitToConvert);
-          numberConcat.push(convertHex(remainder, digitToConvert));
-          console.log(remainder + " ");
-          numberToConvert /= digitToConvert;
+          remainder = 0;
+          
+          while(numberToConvert >= digitToConvert) {
+            remainder = Math.floor(numberToConvert % digitToConvert);
+            numberConcat.push(convertHex(remainder, digitToConvert));
+            // console.log(remainder + " ");
+            numberToConvert /= digitToConvert;
+          }
         }
+
+        // else if(digitToConvert) {
+        //   numberToConvert = numberToConvert.split("");
+        //   for(let i; i <= numberToConvert.length; i++) {
+        //     numberToConvert[i] = numberToConvert
+        //   }
+        // }
+
         if(numberToConvert < digitToConvert) remainder = Math.floor(numberToConvert);
         numberConcat.push(convertHex(remainder, digitToConvert))
+        // console.log(numberConcat)
         numberConcat = numberConcat.reverse().join("");
-        resultField.value   = numberConcat;
+        resultField.innerHTML   = initialNumber + "<span class='digit'>" + digitFromConvert +
+         "</span>" + " = " + numberConcat + "<span class='digit'>" + digitToConvert +
+         "</span>";
 
       }
+
+
 
       function convertHex(remainder, digitToConvert) {
           if(digitToConvert == 16) {
@@ -79,20 +147,6 @@
           else return remainder;
       }
 
-      console.log(convertHex(15, 8))
-      // var num = 202,
-      //     div = 8,
-      //     remainder,
-      //     concat = [];
-      // while(num > div) {
-      //   console.log(num + ":" + div)
-      //   remainder = Math.floor(num%div);
-      //   concat.push(remainder);
-      //   num = Math.floor(num / div);
-      // }
-      // if(num < div) remainder = Math.floor(num);
-      // concat.push(remainder);
-      // console.log(concat);
     </script>
   </body>
 </html>
