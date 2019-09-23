@@ -48,7 +48,7 @@
         </tr>
         <tr>
           <td>
-            <p>Конвертировать из разряда </p>
+            <p>Конвертировать из системы счисления </p>
             <select name="digitFromConvert" id="digitFromConvert">
               <option value="2">2</option>
               <option value="3">3</option>
@@ -92,21 +92,34 @@
         // numberToConvert splitting
             numInteger        = numberToConvert.split(".")[0],
             integerConcat     = [],
-            numFraction       = numberToConvert.split(".")[1];
+            numFraction       = numberToConvert.split(".")[1],
+            fractionConcat    = [];
             console.log(numFraction)
 
         if(digitFromConvert == 10) {
           if(numFraction) {
+            var n               = numFraction,
+                initialLength   = n.length,
+                protoInteger;
             numberConcat.push('.');
-            while(numFraction >= digitFromConvert) {
-              remainder = Math.floor(numFraction % digitToConvert);
-              numberConcat.push(convertHex(remainder, digitToConvert));
-              numFraction /= digitToConvert;
+            for(let i = 0; i < 6; i++) {
+              n = (n * digitToConvert) + "";
+              console.log(n)
+              if(n.length > initialLength) {
+                protoInteger = n.substr(0, n.length - initialLength);
+                fractionConcat.push(convertHex(protoInteger, digitToConvert));
+                n = n.substr(-initialLength);
+              }
+              else {
+                fractionConcat.push(0);
+              }
             }
+            fractionConcat = fractionConcat.join('');
+            console.log(fractionConcat);
           }
 
           remainder = 0;
-          
+
           while(numberToConvert >= digitToConvert) {
             remainder = Math.floor(numberToConvert % digitToConvert);
             numberConcat.push(convertHex(remainder, digitToConvert));
@@ -125,7 +138,9 @@
         if(numberToConvert < digitToConvert) remainder = Math.floor(numberToConvert);
         numberConcat.push(convertHex(remainder, digitToConvert))
         // console.log(numberConcat)
-        numberConcat = numberConcat.reverse().join("");
+        numberConcat = numberConcat.reverse();
+        numberConcat.push(fractionConcat);
+        numberConcat = numberConcat.join('');
         resultField.innerHTML   = initialNumber + "<span class='digit'>" + digitFromConvert +
          "</span>" + " = " + numberConcat + "<span class='digit'>" + digitToConvert +
          "</span>";
